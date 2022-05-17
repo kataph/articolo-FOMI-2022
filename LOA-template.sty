@@ -1,0 +1,265 @@
+%\usepackage{dcolumn}
+
+\ProvidesPackage{LOA-template}
+
+\RequirePackage{soul}
+\RequirePackage{comment} %% utility package: allows multiline comments
+\RequirePackage{xspace}  %% utility package: allows definition of no-argument commands that do not absorb trailing saces
+\RequirePackage{ifthen}  %% utility package: allows for conditionals
+\RequirePackage{xcolor}  %% utility package: colors for temporary comments
+\RequirePackage{enumitem}  %% utility package: change spacing of lists
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+%%%%%%%%%%% Put your definitions here
+%%%%% FORMULAS
+% COUNTERS
+% newcommand for list ox formula environment
+\newcommand{\bflist}{\begin{list}{}{\setlength{\topsep}{2mm}\setlength{\partopsep}{0mm}\setlength{\parsep}{0mm}\setlength{\leftmargin}{9mm}\setlength{\labelwidth}{8mm}}}
+\newcommand{\eflist}{\end{list}}
+
+% newcommand for labels of axioms, definitions and formulae
+\newcommand{\AxLabel}{\textrm{a}}
+\newcommand{\DefLabel}{\textrm{d}}
+\newcommand{\ExLabel}{\textrm{ex}}
+\newcommand{\FmLabel}{\textrm{f}}
+\newcommand{\ThrLabel}{\textrm{t}}
+\newcommand{\PbrLabel}{\textrm{pr}}
+\newcommand{\NtsLabel}{{\color{red}\textrm{TODO}}}
+
+% counter and newcommand for numbering formulas
+\newcounter{cntax}
+\newcommand{\myax}[1]{\refstepcounter{cntax}\begin{small}{\bf \AxLabel\thecntax\label{#1}}\end{small}}
+\newcounter{cntdef}
+\newcommand{\mydf}[1]{\refstepcounter{cntdef}\begin{small}{\bf \DefLabel\thecntdef\label{#1}}\end{small}}
+\newcounter{cntfm}
+\newcommand{\myex}[1]{\refstepcounter{cntex}\begin{small}{\bf \ExLabel\thecntex\label{#1}}\end{small}}
+\newcounter{cntex}
+\newcommand{\myfm}[1]{\refstepcounter{cntfm}\begin{small}{\bf \FmLabel\thecntfm\label{#1}}\end{small}}
+\newcounter{cntthr}
+\newcommand{\mythr}[1]{\refstepcounter{cntthr}\begin{small}{\bf \ThrLabel\thecntthr\label{#1}}\end{small}}
+\newcounter{cntnts}
+\newcommand{\mypb}[1]{\refstepcounter{cntpbr}\begin{small}{\bf \PbrLabel\thecntpbr\label{#1}}\end{small}}
+\newcounter{cntpbr}
+\newcommand{\mynts}[1]{\refstepcounter{cntnts}\begin{small}{\bf \NtsLabel\thecntnts\label{#1}}\end{small}}
+
+\newcommand{\myElucidation}[1]{``#1''}
+
+\newcommand{\refax}[1]{({\AxLabel}\ref{#1})}
+\newcommand{\refdf}[1]{({\DefLabel}\ref{#1})}
+\newcommand{\refex}[1]{({\ExLabel}\ref{#1})}
+\newcommand{\reffm}[1]{({\FmLabel}\ref{#1})}
+\newcommand{\refth}[1]{({\ThrLabel}\ref{#1})}
+\newcommand{\refpb}[1]{({\PbrLabel}\ref{#1})}
+\newcommand{\refnt}[1]{({\NtsLabel}\ref{#1})}
+
+%%%%% Predicates styling
+%% general style -- purtroppo non funzionano tutti siccome LaTeX fa le storie per le espansioni delle macro, credo
+%                 - pero' almeno texttt, textnormal, textbf e textit funzionano; textsc non funziona
+\newcommand{\generalStyle}[1]{\texttt{#1}}
+%% binary predicate style
+\newcommand{\biRel}[3]{\generalStyle{#1}(#2,#3)}
+%% monadic predicate style
+\newcommand{\uniRel}[2]{\generalStyle{#1}(#2)}
+%% monadic predicate (parameterized) style
+\newcommand{\uniRelPar}[3]{\generalStyle{#1}_{\generalStyle{#3}}(#2)}
+%% binary predicate (parameterized) style
+\newcommand{\biRelPar}[4]{\generalStyle{#1}_{\generalStyle{#4}}(#2,#3)}
+\newcommand{\triRelPar}[5]{\generalStyle{#1}_{\generalStyle{#5}}(#2,#3,#4)}
+%% ternary predicate style
+\newcommand{\triRel}[4]{\generalStyle{#1}(#2,#3,#4)}
+%% 4- predicate style
+\newcommand{\fourRel}[5]{\generalStyle{#1}(#2,#3,#4,#5)}
+%% 5- predicate style
+\newcommand{\fiveRel}[6]{\generalStyle{#1}(#2,#3,#4,#5,#6)}
+%% constant style
+\newcommand{\cst}[1]{\ensuremath{\mathtt{#1}}}
+%% functions 
+%\newcommand{\functionIndividual}[1]{\cst{#1}}
+
+%%%%%%% Logic symbols
+%% biconditional
+\newcommand{\myiff}{\Longleftrightarrow}
+%% necessary condition
+\newcommand{\myif}{\Longleftarrow \hspace{0.9mm}}
+%% sufficient condition
+\newcommand{\myfi}{\hspace{0.9mm} \Longrightarrow}
+
+%%%%%%% DOLCE
+%% DOLCE style -- Small Caps, ie textsc, non funziona per qualche ragione
+\newcommand{\DOLCE}{\textsc{DOLCE}\xspace} %% TODO far si che le macro applichino lo stile :(, perche' textsc non funziona?
+\newcommand{\YAMATO}{\textsc{YAMATO}\xspace}
+\newcommand{\BFO}{\textsc{BFO}\xspace} 
+\newcommand{\GFO}{\textsc{GFO}\xspace} 
+\newcommand{\OWL}{\textnormal{OWL}\xspace} 
+\newcommand{\TLO}{\textnormal{TLO}\xspace} 
+
+
+%% DOLCE various predicates
+\newcommand{\DOLCEQuality}[1]{\uniRel{Q}{#1}}
+\newcommand{\DOLCEEvent}[1]{\uniRel{{E}}{#1}}
+\newcommand{\DOLCEDescription}[1]{\uniRel{{DS}}{#1}}
+\newcommand{\DOLCEAgent}[1]{\uniRel{{ASO}}{#1}}
+\newcommand{\Role}[1]{\uniRel{{Role}}{#1}}
+\newcommand{\DOLCERole}[1]{\uniRel{{RL}}{#1}}
+\newcommand{\DOLCEState}[1]{\uniRel{{ST}}{#1}}
+\newcommand{\DOLCEProcess}[1]{\uniRel{PRO}{#1}}
+\newcommand{\DOLCEPerdurant}[1]{\uniRel{{PD}}{#1}}
+\newcommand{\DOLCEStative}[1]{\uniRel{{STV}}{#1}}
+\newcommand{\DOLCEPhysObj}[1]{\uniRel{{POB}}{#1}}
+\newcommand{\DOLCENASO}[1]{\uniRel{{NASO}}{#1}}
+\newcommand{\DOLCEConcept}[1]{\uniRel{{CN}}{#1}}
+
+\newcommand{\DOLCEDefinedBy}[2]{\biRel{{DF}}{#1}{#2}}
+\newcommand{\DOLCEUsedBy}[2]{\biRel{{US}}{#1}{#2}}
+\newcommand{\DOLCEPC}[3]{\triRel{{PC}}{#1}{#2}{#3}}
+\newcommand{\DOLCEPartBin}[2]{\biRel{{CP}}{#1}{#2}}
+\newcommand{\DOLCEPart}[3]{\triRel{{P}}{#1}{#2}{#3}}
+\newcommand{\DOLCEOver}[2]{\biRel{{O}}{#1}{#2}}
+\newcommand{\DOLCEConstitutes}[2]{\biRel{{constitutes}}{#1}{#2}}
+\newcommand{\DOLCEK}[3]{\triRel{{K}}{#1}{#2}{#3}}
+% \newcommand{\DOLCEParticipates}[3]{\triRel{{Participates}}{#1}{#2}{#3}}
+\newcommand{\DOLCEQualityDirect}[2]{\biRel{qt}{#1}{#2}}
+\newcommand{\DOLCEQualeDirect}[2]{\biRel{{ql}}{#1}{#2}}
+\newcommand{\DOLCECLbyBinary}[2]{\biRel{CL}{#1}{#2}}
+\newcommand{\DOLCECLby}[3]{\triRel{CL}{#1}{#2}{#3}}
+\newcommand{\DOLCEPRE}[2]{\biRel{PRE}{#1}{#2}}
+\newcommand{\DOLCEConceptSubsum}[2]{\biRel{SP}{#1}{#2}}
+
+\newcommand{\DOLCESum}[3]{\triRel{Sum}{#1}{#2}{#3}}
+\newcommand{\DOLCECLbyPar}[3][]{\biRelPar{{CL}}{#2}{#3}{#1}}
+
+%%%% Additional predicates
+\newcommand{\RelationalQualityClass}{\generalStyle{relationalQt}}
+\newcommand{\CapabilityClass}{\generalStyle{Capability}}
+\newcommand{\CapacityClass}{\generalStyle{Capacity}}
+
+\newcommand{\TechArt}[1]{\uniRel{TechArt}{#1}}
+\newcommand{\TechArtNullary}{\generalStyle{TechArt}}
+\newcommand{\Component}[1]{\uniRel{Component}{#1}}
+\newcommand{\Capability}[1]{\uniRel{Capability}{#1}}
+\newcommand{\PumpingCapability}[1]{\uniRel{PumpingCapability}{#1}}
+\newcommand{\PumpingProcess}[1]{\uniRel{PumpingProcess}{#1}}
+\newcommand{\BehaviourAbstract}[1]{\uniRel{AbstBeh}{#1}}
+\newcommand{\BehaviourConcrete}[1]{\uniRel{Behaviour}{#1}}
+\newcommand{\BehaviourConcreteNullary}{\generalStyle{Behaviour}}
+\newcommand{\Capacity}[1]{\uniRel{Capacity}{#1}}
+\newcommand{\RelationalQuality}[1]{\uniRel{relationalQt}{#1}}
+\newcommand{\IntrinsicQuality}[1]{\uniRel{intrinsicQt}{#1}}
+\newcommand{\Goal}[1]{\uniRel{Goal}{#1}}
+\newcommand{\GoalNullary}{\generalStyle{Goal}}
+\newcommand{\StateVariable}[1]{\uniRel{StateVariable}{#1}}
+\newcommand{\System}[1]{\uniRel{System}{#1}}
+\newcommand{\SystemNullary}{\generalStyle{System}}
+\newcommand{\StateVariableCondition}[1]{\uniRel{SystemCond}{#1}}
+\newcommand{\Method}[1]{\uniRelPar{Method}{#1}{Eng}}
+
+\newcommand{\FunctionSys}[1]{\uniRelPar{Function}{#1}{Sys}}
+\newcommand{\FunctionSysOf}[2]{\biRelPar{FunctionOf}{#1}{#2}{Sys}}
+\newcommand{\FunctionAbs}[1]{\uniRelPar{Function}{#1}{Ont}}
+\newcommand{\FunctionSysNullary}{\generalStyle{Function}_{\generalStyle{Sys}}}
+\newcommand{\FunctionEng}[1]{\uniRelPar{Function}{#1}{Eng}}
+
+\newcommand{\inheres}[2]{\biRel{inheres}{#1}{#2}}
+\newcommand{\specificallyDependsOn}[2]{\biRel{dependsOn}{#1}{#2}}
+%SD(x,y) , (∃t(PRE(x,t))∧∀t(PRE(x,t) → PRE(y,t))) (Specific Const. Dep.)
+\newcommand{\founded}[2]{\biRel{\foundedTerm{passive}}{#1}{#2}}
+\newcommand{\foundedNullary}{\generalStyle{\foundedTerm{passive}}}
+
+\newcommand{\contextOf}[2]{\biRel{contextOf}{#1}{#2}}
+\newcommand{\causallyContr}[2]{\biRel{causalContr}{#1}{#2}}
+\newcommand{\causallyContrNullary}{\generalStyle{causalContr}}
+\newcommand{\participatedAsDoer}[3]{\triRel{participatedAsDoer}{#1}{#2}{#3}}
+\newcommand{\participateAsDoer}[3]{\triRel{participatesAsDoer}{#1}{#2}{#3}}
+\newcommand{\participateAsDoerBinary}[2]{\biRel{participatesAsDoer}{#1}{#2}}
+\newcommand{\participateAsFlow}[3]{\triRel{participatesAsFlow}{#1}{#2}{#3}}
+\newcommand{\participateAsFlowBinary}[2]{\biRel{participatesAsFlow}{#1}{#2}}
+\newcommand{\behaviourOf}[2]{\biRel{behaviourOf}{#1}{#2}}
+\newcommand{\goalOf}[2]{\biRel{goalOf}{#1}{#2}}
+\newcommand{\external}[2]{\biRel{externalTo}{#1}{#2}}
+\newcommand{\internal}[2]{\biRel{internalTo}{#1}{#2}}
+\newcommand{\mainFunction}[2]{\biRel{mainFunction}{#1}{#2}}
+\newcommand{\subFunction}[2]{\biRel{subFunction}{#1}{#2}}
+\newcommand{\playAsBinary}[2]{\biRel{playAs}{#1}{#2}}
+\newcommand{\playAs}[3]{\triRel{playAs}{#1}{#2}{#3}}
+\newcommand{\partTABin}[2]{\biRelPar{P}{#1}{#2}{TA}}
+\newcommand{\partTA}[3]{\triRelPar{P}{#1}{#2}{#3}{TA}}
+\newcommand{\partS}[2]{\biRelPar{P}{#1}{#2}{Sys}}
+\newcommand{\describedBy}[2]{\biRelPar{describedBy}{#1}{#2}{Cap}}
+\newcommand{\realizedIn}[2]{\biRelPar{realizedIn}{#1}{#2}{Beh}}
+\newcommand{\foundedCapab}[2]{\biRelPar{founded}{#1}{#2}{Cpb}}
+\newcommand{\foundedROLE}[2]{\biRelPar{\foundedTerm{passive}}{#1}{#2}{Inst}}
+\newcommand{\foundedDef}[2]{\biRelPar{\foundedTerm{passive}}{#1}{#2}{Def}}
+
+%\newcommand{\participateAsDoerTemp}[3]{triRel{participatesAsDoer}{#1}{#2}{#3}}
+\newcommand{\behSum}[3]{\triRel{Sum}{#1}{#2}{#3}}
+\newcommand{\DOLCEQualeTer}[3]{\triRel{ql}{#1}{#2}{#3}}
+
+%% Fnctional Basis Thingies
+\newcommand{\Flow}[1]{\uniRel{Flow}{#1}}
+\newcommand{\flowOf}[2]{\biRel{flowOf}{#1}{#2}}
+\newcommand{\Energy}[1]{\uniRel{Energy}{#1}}
+\newcommand{\Material}[1]{\uniRel{Material}{#1}}
+\newcommand{\Signal}[1]{\uniRel{Signal}{#1}}
+\newcommand{\inp}[2]{\biRel{inp}{#1}{#2}}
+\newcommand{\out}[2]{\biRel{out}{#1}{#2}}
+\newcommand{\ABSum}[3]{\triRel{ASum}{#1}{#2}{#3}}
+
+%% decomposition
+%\newcommand{\decom5}[5]{\fiveRel{comp}{#1}{#2}{#3}{#4}{#5}}
+\newcommand{\decom}{\generalStyle{decomp}}
+
+%%%% First time keyword - usare quando una parola chiave [] menzionata per la prima volta
+\newcommand{\firstTimeKeyWord}[1]{\textit{#1}}
+
+%%%% Terminology - termini introdotti dall'articolo, potenzialmente questionabili, da modificare facilmente
+%%%%%% Terminologia
+
+%% individual quality founds capability
+\newcommand{\foundedTerm}[1]{%
+  \ifthenelse{\equal{#1}{passive}}{founded}{%
+    \ifthenelse{\equal{#1}{verb}}{found}{%
+      \ifthenelse{\equal{#1}{gerund}}{founding}{%
+        ERROR!%
+      }%
+    }%
+  }%
+}  
+
+%% changings of state variables
+\newcommand{\stateVarCond}[1]{%
+  \ifthenelse{\equal{#1}{fullSingular}}{system condition}{%
+    \ifthenelse{\equal{#1}{shortSingular}}{condition}{%
+      \ifthenelse{\equal{#1}{fullPlural}}{system conditions}{%
+        \ifthenelse{\equal{#1}{shortPlural}}{conditions}{%
+          ERROR!%
+        }%
+      }%
+    }%
+  }%
+}  
+
+
+%% single quotes
+\newcommand{\quotes}[1]{`#1'}
+%% double quotes
+\newcommand{\qquotes}[1]{``#1''}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% miscellanea
+%%%%%% The following 4 lines are from https://tex.stackexchange.com/questions/287081/how-to-prevent-a-linebreak-before-align-equation-environment-in-itemize/287091#287091
+\newcommand{\myalignspaceskip}{
+ \abovedisplayskip=-\baselineskip
+ \belowdisplayskip=0pt
+ \abovedisplayshortskip=-\baselineskip
+ \belowdisplayshortskip=0pt}
+%%%%%% Commenti
+% inline red text
+\newcommand{\TODO}[1]{{\color{red} #1}}
+% red comment in the margin
+\newcommand{\nb}[1]{\textcolor{red}{$|$}\marginpar{\parbox{22mm}{\scriptsize\raggedright\textcolor{red}{#1}}}}
+% to comment away a small text
+\newcommand{\myComment}[1]{{\unskip \ignorespaces}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%% End of definitions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\endinput
