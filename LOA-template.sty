@@ -253,6 +253,8 @@
 %%%%%% Commenti
 % inline red text
 \newcommand{\TODO}[1]{{\color{red} #1}}
+% if option "hidden-comments" is used, the comments are hidden
+\DeclareOption{hidden-comments}{\renewcommand{\TODO}[1]{}}
 % red comment in the margin
 \newcommand{\nb}[1]{\textcolor{red}{$|$}\marginpar{\parbox{22mm}{\scriptsize\raggedright\textcolor{red}{#1}}}}
 % to comment away a small text
@@ -261,5 +263,5 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%% End of definitions
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+\ProcessOptions\relax
 \endinput
