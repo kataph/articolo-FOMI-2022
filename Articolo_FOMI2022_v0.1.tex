@@ -306,8 +306,11 @@ In Section \ref{sec:use-case} we will showcase a simplified application of our i
 
 The exploitation of this approach requires further work both at the theoretical and at the practical levels. Yet, the material introduced in this paper suffices to roughly outline how to apply it in a conceptual model.
 
-First, we need a taxonomy accomodating both physical objects and functions. Figure \ref{fig:class-taxonomy} show a DOLCE-based \cite{Borgo-FGG22Dolce} putative taxonomy of such a kind, which subsumes functions into a category for role-concepts, and %, based on previous work {si può citare un lavoro che ancora non si sa se ha passato la revisione? Immagino di no, però sarebbe duopo.} {The characteristic feature is the high-level categorisation of functions in three classes: ontological, systemic, and engineering functions, as well as a separate [...] <--FC:rimuovere}
-supplies a separate category for `way-of-achievements' (from now on `engineering methods'), which can then be specialized into different function- and method-kinds. Let us assume that these classes are sufficiently characterised from the ontological viewpoint, possibly by adopting a foundational ontology. %but this is outside the scope of this paper and we delegate it to further research work. 
+First, we need a taxonomy accomodating both physical objects and functions. Figure \ref{fig:class-taxonomy} show a DOLCE-based \cite{Borgo-FGG22Dolce} putative taxonomy of such a kind, which subsumes functions and `way-of-achievements' (from now on `engineering methods') into a concept-category\footnote{In \cite{Borgo-FGG22Dolce} roles are subsumed into concepts. Here we also subsume functions into concepts, but do not discuss if functions are roles or not.}. %, and %, based on previous work {si può citare un lavoro che ancora non si sa se ha passato la revisione? Immagino di no, però sarebbe duopo.} {The characteristic feature is the high-level categorisation of functions in three classes: ontological, systemic, and engineering functions, as well as a separate [...] <--FC:rimuovere}
+%supplies a separate category for `way-of-achievements' (from now on `engineering methods')
+%, which can then be specialized into different function- and method-kinds.
+The categories of functions and methods can then be further specialized into different kinds. 
+Let us assume that these classes are sufficiently characterised from the ontological viewpoint, possibly by adopting a foundational ontology. %but this is outside the scope of this paper and we delegate it to further research work. 
 The classes could be stored, together with relevant info, in an appropriate database (see e.g. \cite{kitamuraOntologybasedDescriptionFunctional2003} for a suitable implementation for the engineering methods).
 
 In this approach, a functional decomposition of an engineering system is achieved, alternating the decomposition between engineering methods and functions. 
@@ -321,14 +324,15 @@ Finally, as explained in Section \ref{subsec:identity}, replacement of parts can
 \begin{figure}
   \centering
   \includegraphics[width=0.55\textwidth]{class-taxonomy-small.png}
-  \caption{\label{fig:class-taxonomy} Example of class taxonomy including functions and engineering methods.}
+  \caption{\label{fig:class-taxonomy} Example of class taxonomy including functions and engineering methods.
   %\label{fig:class-taxonomy}
+  }
 \end{figure}
 \begin{figure}
   \centering
-  \includegraphics[width=0.80\textwidth]{functional-decomposition-small.png}
+  \includegraphics[width=0.80\textwidth]{functional-decomposition-small-2.png}
   % \caption{\label{fig:functional-decomposition}}
-  \caption{\label{fig:functional-decomposition} Example of functional decomposition.}
+  \caption{\label{fig:functional-decomposition} Example of functional decomposition. Notice that the methods should not be confused with the objects required to implement them.}
 \end{figure}
 \begin{figure}
   \centering
@@ -339,7 +343,8 @@ Finally, as explained in Section \ref{subsec:identity}, replacement of parts can
 
 \section{Conclusion}
 The paper has described two recurring problems in functional modelling, and used ontological arguments to characterise some of the most common methodologies used in functional modelling with respect to these problems and to show their limitations. 
-Finally, the paper suggests a different way to face these problems and argues that it seems to be a successful approach to effectively manage these problems. This claim has been supported via an (admittedly brief) example of how the approach could be implemented in conceptual modelling.
+Finally, the paper suggests how certain characteristics of some of these methodologies can be used to successfully manage the two problems. %a different way to face these problems and argues that it seems to be a successful approach to effectively manage these problems. 
+This claim has been supported via an (admittedly brief) example of how the approach could be implemented in conceptual modelling.
 
 Further work is needed to analyze these topics more accurately and to cover additional aspects necessary for the full understanding the proposed methodology including, for example, the modeling of malfunctioning.
 
