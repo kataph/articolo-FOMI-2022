@@ -302,7 +302,7 @@ The categories of functions and methods can then be further specialized into dif
 Let us assume that these classes are sufficiently characterised ontologically, possibly by adopting a foundational ontology. 
 The classes could be stored, together with relevant info, in an appropriate database (see e.g. \cite{kitamuraOntologybasedDescriptionFunctional2003} for a suitable implementation for engineering methods).
 
-In this approach, a functional decomposition of an engineering system is achieved by alternating the decomposition between engineering methods and functions. 
+In this approach, a functional decomposition of an engineering system is achieved by alternating the decomposition between engineering methods and functions. This is because, in this approach, a function can be implemented by a method, and a method can raise the problem of implementing some functions of finer granularity. 
 Consider a laser cutting machine that cuts metal tubes using a laser beam emitted from a mobile cutting head. The tubes are held in place and moved by a spindle that rotates and translates. To obtain an acceptable quality of the cut, the workpiece must be kept in the right position very precisely. To do this, a specific subsystem, called \textit{steady rest} is used. The steady rest secures the tube head by using special jaws moved by pneumatic cylinders. 
 Steady rests are a standard engineering solution in tooling machines (including laser cutting machines), thus they can be considered parts of a well known engineering methodology. In the particular case we are considering, the steady rest is automated (it rotates, among other things, such as sensing the tube position through a photocell couple), therefore some method must be selected to allow it to perform the needed functions, e.g., \textit{to rotate}. Figure \ref{fig:functional-decomposition} gives an example of how the goal of performing a high quality laser cut is ensured by decomposing the function of a steady rest of the laser cutting machine.
 The decomposition shows the chosen method based on an \textit{electrical motor} (together with typical auxiliary parts such as a gearbox and a pinion-crown gear coupling). This method can be further divided into a \textit{convert electrical energy into mechanical energy} function, realized by the motor proper, and a \textit{transmit mechanical energy} function, realized by the gears and shafts linked to the motor. The decomposition can go on until the desired granularity level is reached. 
@@ -321,7 +321,7 @@ Finally, as explained in Section \ref{subsec:identity}, the replacement of parts
   \centering
   \includegraphics[width=0.80\textwidth]{functional-decomposition-small-2.png}
   % \caption{\label{fig:functional-decomposition}}
-  \caption{\label{fig:functional-decomposition} Example of functional decomposition. Notice that the methods should not be confused with the objects required to implement them.}
+  \caption{\label{fig:functional-decomposition} Example of functional decomposition. Notice the alternating between functions and methods, which is explained in the text. Additionally, methods should not be confused with the objects required to implement them.}
 \end{figure}
 \begin{figure}
   \centering
