@@ -43,11 +43,11 @@
 
 %%
 %% This command is for the conference information
-\conference{FOMI 2022: 12th International Workshop on Formal Ontologies meet Industry, held 12-15 September 2022, École nationale d'Ingénieurs de Tarbes (INP-ENIT), University of Toulouse, Tarbes, France.
+\conference{FOMI 2022: 12th International Workshop on Formal Ontologies meet Industry, September 12-15, 2022, Tarbes, France.
 % held at JOWO 2021: Episode VII The Bolzano Summer of Knowledge, September 11–18 , 2021, Bolzano, Italy
 }
 
-\title{Functional modelling in engineering: a first comparison of approaches on two problems}
+\title{Functional Modelling in Engineering: a First Comparison of Approaches on Two Problems}
 
 
 %%
@@ -103,7 +103,7 @@ Unfortunately, though several theories of functionality have been proposed and s
 In this paper, we describe some of the problems that current theories face, and show, using a brief use case, possible ways to tackle them through applied ontology principles.
 
 %% introduction & very brief review
-\section{A brief look at the literature}\label{sec:literature}
+\section{A Brief Look at the Literature}\label{sec:literature}
 
 Functionality is a well-studied topic in engineering and the literature is large, %\cite{chandrasekaranFunctionalRepresentationDesign1993, umedaFunctionBehaviourStructure1990, hirtz_functional_2002} and ontology \cite{sasajimaFBRLFunctionBehavior1995, TowardAUnifiedDefinition2012}, at least from more than 50 years \cite{collinsFailureExperienceMatrixUseful1976,pahl_engineering_2007} 
 see for instance \cite{pahl_engineering_2007,erdenReviewFunctionModeling2008}. %for an in-depth review of some aspects of the function-related literature).
@@ -124,7 +124,7 @@ We briefly recall the main characteristics of some theories and methodologies th
 \end{itemize}
 
 Several other theories and methodologies exist, the interested reader can see, for example, \cite{umedaFunctionBehaviourStructure1990,qianFunctionBehaviorStructure1996}, or the behavioural diagrams of UML or SysML, %some of which are arguably similar to the methodologies in this section, 
-though the latter do not differentiate clearly between behaviours and functions. %, zhaoStateBehaviorFunction2019}.
+though the latter do not differentiate clearly between behaviours, functions, and related concepts. %, zhaoStateBehaviorFunction2019}.
 There are also theories of functionality developed by the philosophical community, e.g., Cummins \cite{cumminsFunctionalAnalysis1975} and further works in upper ontologies (where FBRL originates) such as \BFO, \GFO, \YAMATO and \DOLCE (see e.g. \cite{spearFunctionsBasicFormal2016, herreGeneralFormalOntology2006, sasajimaFBRLFunctionBehavior1995, borgoFormalOntologicalPerspective2009}, respectively)
 These theories preicate different ontological categorisations of functions. 
 Here we collect those that we will use later:
@@ -168,9 +168,9 @@ Theories of functionality, as an important part of systems modelling, intersect 
 
 
 
-\section{Two problems in functional modelling}
+\section{Two Problems in Functional Modelling}
 
-\subsection{Diachronic identity}\label{subsec:identity}
+\subsection{Diachronic Identity}\label{subsec:identity}
 Engineering systems and their components are both difficult to characterise ontologically. %Take, for example, any schematic of a given system. The actual system may or may not, at any given time, follow such a schematic. For instance, a component may be missing for some period of time. This can be explained by saying that the schematic represents a system the way it should be, not the way it actually is. Unfortunately, in this way we must reason in terms of modality (how it is vs. how could be). Additionally, this view does not explain how one can recognize the actual system and the schematic as linked to each other %the same type of objects{[S: mi aspettavo "linked to each other", cos'\`e il "same type of objects" di cui parli?][FC: modificato come hai detto te]} 
 In this section, we argue how an appropriate theory of functions can lessen this difficulty. %these problems. %<--FC:lungo;argomentabilmente sbagliato o fuori contesto;rimuovere} 
 In particular, we focus on the so-called replacement problem \cite{guarinoArtefactualSystemsMissing2014},  \cite[Chapter 14]{westDevelopingHighQuality2011}:
@@ -215,7 +215,7 @@ seems unnecessary if one wishes to just solve problems \refpb{replacement} and \
 
 In Section \ref{sec:use-case} we will showcase how one can implement the proposed strategy of introducing functions and functional decompositions to explain the survival of engineering systems to component replacement.  
 
-\subsection{Granularity of the functional model}
+\subsection{Granularity of the Functional Model}
 We now turn to the second problem:
 \bflist
   \item[\mypb{granularity-problem}] \textbf{The granularity problem}. How can we ensure effective management of granularity in engineering system modelling?
@@ -294,7 +294,7 @@ In Section \ref{sec:use-case}, we will showcase a simplified application of our 
 %We touch this topic only briefly, since a full discussion is outside the scope of this paper.
 %{<spiegare principali classificazioni relative a guasti e argomentare che la divisione in funzioni ontolo./sist./ing.-metodi riflette un'analoga suddivisione a livelli di guasti, che è originale e interessante> delete? This is waaay out of space.}
 
-\section{How to put a possible approach to work}\label{sec:use-case}
+\section{How to Put a Possible Approach to Work}\label{sec:use-case}
 
 %The exploitation of this approach requires further work both at the theoretical and practical levels. Yet, the material introduced in this paper suffices to roughly outline how to apply it in a conceptual model.
 The exploitation of the approach we argued for in the previous sections (that is, conceptualizing functions as roles and using a FBRL-style of decomposition) requires further work both at the theoretical and practical levels. Yet, the material introduced in this paper suffices to roughly outline how to apply it in a conceptual model.
