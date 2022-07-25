@@ -123,7 +123,8 @@ We briefly recall the main characteristics of some theories and methodologies th
     Finally, to give a teleological explanation of a system, a set of `meta-functions' is introduced (e.g., the give-heat function of the boiler \textit{drives} the rotate-shaft function of the turbine). 
 \end{itemize}
 
-Several other theories and methodologies exist, the interested reader can see, for example, \cite{umedaFunctionBehaviourStructure1990,qianFunctionBehaviorStructure1996}. %, zhaoStateBehaviorFunction2019}.
+Several other theories and methodologies exist, the interested reader can see, for example, \cite{umedaFunctionBehaviourStructure1990,qianFunctionBehaviorStructure1996}, or the behavioural diagrams of UML or SysML, %some of which are arguably similar to the methodologies in this section, 
+though the latter do not differentiate clearly between behaviours, functions, and related concepts. %, zhaoStateBehaviorFunction2019}.
 In addition, there are also theories of functionality developed by the philosophical community, e.g., Cummins \cite{cumminsFunctionalAnalysis1975} and further works in upper ontologies (where FBRL originates) such as \BFO, \GFO, \YAMATO and \DOLCE (see e.g. \cite{spearFunctionsBasicFormal2016, herreGeneralFormalOntology2006, sasajimaFBRLFunctionBehavior1995, borgoFormalOntologicalPerspective2009}, respectively)
 These theories preicate different ontological categorisations of functions. 
 Here we collect those that we will use later:
@@ -260,7 +261,7 @@ In the same way, if we have a taxonomy of function-types, together with a relati
 
 % Functional decomposition is essential, because of multiple reasons. We lists some of those in the following (some points refers to the structural hierarchy and not to the functional one, but, if we assume that some relation exists between the physical components of a system and its functions, they translate to the functional hierarchy as well):
 
-Granularity is important when modelling engineering systems for, at least, the following reasons:
+Granularity is important when modelling engineering systems for, at least, these reasons:
 \begin{itemize}
     \item \textbf{Accounting for different viewpoints.} Different operations carried out on a product during the various steps of its lifecycle require different points of view about the product. Those viewpoints may differ also due to the level of granularity they focus on, for example, during the assembly of a machine, a car say, it may be important for the workers to know where each screw goes and what kind of washer is required. On the other hand, during maintenance, it may happen that, if a part of the car is malfunctioning, it is simply replaced as a whole.%, and no diagnostic is carried out to determine what was wrong within that part, because it would be too costly in terms of time and money, even if that part was assembled by the same company that is carrying out maintenance. 
     \item \textbf{Simplifying the management of complex systems.} Engineered systems can be extremely complex, and when that happens it would be very difficult to manage them using a fixed level of granularity. %This is because that level would necessarily be the finest one, otherwise some information would be lost. But this would be akin to always treat a complex system, say a car, as a list of screws, bolts, pipes, metal plates and pieces of various shapes, etc., which would be untenable.
